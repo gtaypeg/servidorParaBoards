@@ -1,0 +1,181 @@
+input {
+  width: 50%;
+}
+
+#thread-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.repliesContainer {
+  overflow: hidden;
+  position: relative;
+
+  background-color: rgb(34, 64, 112);
+}
+.count,
+.date {
+  font-weight: 700;
+  font-size: 0.7rem;
+  font-style: italic;
+}
+.thread {
+  border: 5px solid rgb(67, 116, 148);
+  width: 800px;
+  margin: 10px 0;
+  background-color: rgb(230, 230, 230);
+
+  .headThread {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  h6,
+  p,
+  a,
+  .headThread {
+    padding: 0 10px;
+  }
+  a {
+    text-decoration: underline;
+    font-weight: 500;
+  }
+}
+
+.submitContainer {
+  background-color: rgb(4, 134, 74);
+  div {
+    max-width: 400px;
+    min-width: 100px;
+    margin: auto;
+  }
+  .pass {
+    max-width: 200px;
+  }
+}
+.quickReplyContainer {
+  background-color: rgb(36, 52, 53);
+  margin: 0;
+
+  // div {
+  //   max-width: 400px;
+  //   min-width: 100px;
+  // }
+  form {
+    display: flex;
+
+    justify-content: space-between;
+    div {
+      width: calc(100% - 20px);
+      div {
+        .quickReply {
+          width: 100%;
+          border-radius: 5px;
+        }
+      }
+
+      .pass {
+        max-width: 200px;
+        margin: 0;
+        border-radius: 5px;
+      }
+    }
+    button {
+      display: block;
+      width: 70px;
+      height: 40px;
+      padding: 0;
+      margin: 0;
+      align-self: start;
+      background-color: rgb(42, 151, 23);
+    }
+  }
+}
+.reply {
+  border-radius: 5px;
+  // border: 1px solid;
+  margin: 10px 10px 10px 40px;
+  padding: 5px 5px 5px 10px;
+  background-color: #fff;
+  .button {
+    background-color: rgb(0, 131, 136);
+  }
+  .button.active {
+    background-color: rgb(1, 87, 90);
+  }
+  .replyDate {
+    font-size: 0.6rem;
+    font-style: italic;
+    color: rgb(107, 107, 107);
+    margin-bottom: 2px;
+  }
+}
+.replyHead {
+  display: flex;
+  justify-content: space-between;
+  p {
+    display: inline-block;
+    width: calc(100% - 50px);
+    word-break: break-word;
+    font-weight: 500;
+  }
+}
+.button {
+  position: relative;
+  padding: 5px;
+  background-color: rgb(0, 140, 255);
+  font-size: 0.7rem;
+  margin-bottom: 5px;
+}
+.button.active {
+  background-color: rgb(2, 74, 133);
+}
+.menu {
+  position: relative;
+
+  ul {
+    position: absolute;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.794);
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    right: 0;
+    border: solid 2px gray;
+    .item:nth-child(even) {
+      border-top: solid 2px gray;
+    }
+    li {
+      width: 100%;
+      display: inline-block;
+
+      .buttonReport {
+        border-radius: inherit;
+        margin: 5px;
+        border: none;
+        height: 50px;
+        width: calc(100% - 10px);
+        background-color: rgb(144, 0, 60);
+      }
+      input {
+        margin-top: 5px;
+        font-size: 0.9rem;
+        height: 50px;
+        width: 100%;
+      }
+      .deleteButton {
+        background-color: rgb(146, 0, 0);
+      }
+    }
+  }
+}
+
+@media (max-width: 810px) {
+  .thread {
+    width: 98%;
+  }
+}

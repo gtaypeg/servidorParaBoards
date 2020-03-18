@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap-reboot.min.css' />
+    <link rel="stylesheet" href="/public/test-style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anon Message Board</title>
+</head>
+
+<body>
+    <main>
+        <h1>PAGINA DE TEST<br><br>SQA_3 - Anon Message Board</h1>
+        <h3>User Stories:</h3>
+        <ol>
+            <li>Only allow your site to be loading in an iFrame on your own pages.</li>
+            <li>Do not allow DNS prefetching.</li>
+            <li>Only allow your site to send the referrer for your own pages.</li>
+            <li>I can POST a thread to a specific message board by passing form data text and delete_password to
+                /api/threads/{board}.(Recomend res.redirect to board page /b/{board}) Saved will be _id, text,
+                created_on(date&time), bumped_on(date&time, starts same as created_on), reported(boolean),
+                delete_password, & replies(array).</li>
+            <li>I can POST a reply to a thead on a specific board by passing form data text, delete_password, &
+                thread_id to /api/replies/{board} and it will also update the bumped_on date to the comments
+                date.(Recomend res.redirect to thread page /b/{board}/{thread_id}) In the thread's 'replies' array will
+                be saved _id, text, created_on, delete_password, & reported.</li>
+            <li>I can GET an array of the most recent 10 bumped threads on the board with only the most recent 3 replies
+                from /api/threads/{board}. The reported and delete_passwords fields will not be sent.</li>
+            <li>I can GET an entire thread with all it's replies from /api/replies/{board}?thread_id={thread_id}. Also
+                hiding the same fields.</li>
+            <li>I can delete a thread completely if I send a DELETE request to /api/threads/{board} and pass along the
+                thread_id & delete_password. (Text response will be 'incorrect password' or 'success')</li>
+            <li>I can delete a post(just changing the text to '[deleted]') if I send a DELETE request to
+                /api/replies/{board} and pass along the thread_id, reply_id, & delete_password. (Text response will be
+                'incorrect password' or 'success')</li>
+            <li>I can report a thread and change it's reported value to true by sending a PUT request to
+                /api/threads/{board} and pass along the thread_id. (Text response will be 'success')</li>
+            <li>I can report a reply and change it's reported value to true by sending a PUT request to
+                /api/replies/{board} and pass along the thread_id & reply_id. (Text response will be 'success')</li>
+            <li>Complete functional tests that wholely test routes and pass.</li>
+        </ol>
+        <a href="/b/general">Go to testing '/b/general/' board</a>
+        <h3>
+            <New thread (POST /api/threads/:board)/h3>
+                <form action="/api/threads/" method="post">
+                    <input type="text" name="board" class="board" required placeholder="board">
+                    <textarea name="text" id="tex-new-thread" required placeholder="Thread text..."></textarea>
+                    <input type="password" name="pass" id="pass-new-thread" required placeholder="password to delete"
+                        minlength="5" maxlength="10">
+                    <button type="submit">SUBMIT</button>
+                </form>
+                <h3>Report thread (PUT /api/threads/:board)</h3>
+                <form action="/api/threads/" method="put">
+                    <input type="text" name="board" class="board" placeholder="board">
+                    <input type="text" name="id-thread" class="id-thread" placeholder="id to report">
+                    <button type="submit">Submit</button>
+                </form>
+                <h3>Delete thread (DELETE /api/threads/:board)</h3>
+                <form action="/api/threads/" method="delete">
+                    <input type="text" name="board" class="board" placeholder="board">
+                    <input type="text" name="id" id="delete_thread" placeholder="Id to delete">
+                    <input type="text" name="pass" id="pass-delete-thread" placeholder="password">
+                    <button type="submit">Submit</button>
+                </form>
+                <h3>New reply (POST /api/replies/:board)</h3>
+                <form action="/api/replies/" method="post">
+                    <input type="text" name="board" class="board" placeholder="Board">
+                    <input type="text" name="id-thread" class="id-thread" placeholder="id thread">
+                    <textarea name="thread-text" class="thread-text" cols="30" rows="10"
+                        placeholder="Thread-text"></textarea>
+                    <input type="text" name="pass" class="pass" placeholder="password to delete">
+                    <button type="submit">Submit</button>
+                </form>
+                <h3>Report reply (PUT /api/replies/:board)</h3>
+                <form action="/api/replies/" method="put">
+                    <input type="text" name="board" class="board" placeholder="Board">
+                    <input type="text" name="id-thread" class="id-thread" placeholder="Thread id">
+                    <input type="text" name="id-reply" class="id-reply" placeholder="id to report">
+                    <button type="submit">Submit</button>
+                </form>
+                <h3>Delete reply (DELETE /api/replies/:board)</h3>
+                <form action="/api/replies/" method="delete">
+                    <input type="text" name="board" class="board" placeholder="Board">
+                    <input type="text" name="id-thread" class="id-thread" placeholder="Thread id">
+                    <input type="text" name="id-reply" class="id-reply" placeholder="id to delete">
+                    <input type="text" name="pass" class="pass" placeholder="password to delete">
+                    <button type="submit"></button>
+                </form>
+    </main>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script src="/public/test-script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+h1 {
+  background-color: rgb(211, 211, 211);
+  padding: 0 0 0 10px;
+  word-break: break-word;
+}
+
+h4 {
+  padding-top: 10px;
+  text-align: center;
+  color: whitesmoke;
+}
+form {
+  padding: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+input,
+textarea,
+button {
+  display: block;
+  margin: 0 auto 10px;
+  padding: 5px;
+}
+input {
+  width: 100%;
+}
+label {
+  display: block;
+  position: relative;
+  width: 190px;
+  height: auto;
+
+  margin: auto;
+}
+textarea {
+  resize: vertical;
+  width: 80%;
+}
+
+.error {
+  color: red;
+  background-color: rgba(255, 255, 255, 0.883);
+  display: inline-block;
+  padding: 5px;
+  transition: all 0.5s;
+  position: absolute;
+  font-size: 0.8rem;
+  width: 190px;
+  top: -30px;
+  text-align: center;
+}
+
+.targetBoard {
+  border: 1px solid;
+  width: 190px;
+  text-align: center;
+  margin: 5px;
+  color: black;
+  text-decoration: none;
+  transition: all 0.2s;
+  background-color: rgb(1, 202, 142);
+}
+
+.targetBoard:hover {
+  background-color: rgb(187, 187, 187);
+}
+button {
+  background-color: rgb(3, 150, 235);
+  color: white;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 5px 20px;
+}
+
+button.load {
+  animation: infinite 1s transparente;
+}
+
+@keyframes transparente {
+  50% {
+    opacity: 0.7;
+  }
+}
+button:disabled {
+  background-color: rgba(1, 94, 148, 0.568);
+  color: rgba(255, 255, 255, 0.513);
+  border-color: rgba(245, 245, 245, 0.52);
+}
+
+#boards-container {
+  transition: all 0.3s;
+  display: flex;
+  margin: auto;
+  max-width: 1000px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1000px) {
+  #boards-container {
+    max-width: 800px;
+  }
+}
+@media (max-width: 800px) {
+  #boards-container {
+    max-width: 600px;
+  }
+}
+@media (max-width: 600px) {
+  #boards-container {
+    max-width: 400px;
+  }
+}
+@media (max-width: 400px) {
+  #boards-container {
+    display: block;
+  }
+  .targetBoard {
+    margin: 5px auto;
+    width: 95%;
+  }
+  #boards-container {
+    max-width: 400px;
+  }
+  input {
+    width: 300px;
+  }
+}
